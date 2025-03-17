@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (alunos(); as alunosRef) {
+      <div>
+        <h2 data-cy="alunosDetailsHeading"><span jhiTranslate="myCaseApp.alunos.detail.title">Alunos</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">Código</span></dt>
+          <dd>
+            <span>{{ alunosRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="myCaseApp.alunos.nome">Nome</span></dt>
+          <dd>
+            <span>{{ alunosRef.nome }}</span>
+          </dd>
+          <dt><span jhiTranslate="myCaseApp.alunos.cpf">Cpf</span></dt>
+          <dd>
+            <span>{{ alunosRef.cpf }}</span>
+          </dd>
+          <dt><span jhiTranslate="myCaseApp.alunos.matricula">Matricula</span></dt>
+          <dd>
+            <span>{{ alunosRef.matricula }}</span>
+          </dd>
+          <dt><span jhiTranslate="myCaseApp.alunos.nascimento">Nascimento</span></dt>
+          <dd>
+            <span>{{ alunosRef.nascimento | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="myCaseApp.alunos.anoLetivo">Ano Letivo</span></dt>
+          <dd>
+            <span>{{ alunosRef.anoLetivo }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Voltar</span>
+        </button>
+
+        <button type="button" [routerLink]="['/alunos', alunosRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

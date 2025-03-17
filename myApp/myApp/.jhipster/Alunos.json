@@ -1,0 +1,39 @@
+{
+  "annotations": {
+    "changelogDate": "20250316181937"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cpf",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "matricula",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nascimento",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "anoLetivo",
+      "fieldType": "Integer"
+    }
+  ],
+  "name": "Alunos",
+  "relationships": [
+    {
+      "otherEntityName": "meta",
+      "otherEntityRelationshipName": "aluno",
+      "relationshipName": "metas",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

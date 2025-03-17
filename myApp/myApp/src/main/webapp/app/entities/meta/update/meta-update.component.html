@@ -1,0 +1,73 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-meta-heading" data-cy="MetaCreateUpdateHeading" jhiTranslate="myCaseApp.meta.home.createOrEditLabel">
+        Criar ou editar Meta
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="myCaseApp.meta.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_notaAnterior" jhiTranslate="myCaseApp.meta.notaAnterior">Nota Anterior</label>
+          <input
+            type="number"
+            class="form-control"
+            name="notaAnterior"
+            id="field_notaAnterior"
+            data-cy="notaAnterior"
+            formControlName="notaAnterior"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_valor" jhiTranslate="myCaseApp.meta.valor">Valor</label>
+          <input type="number" class="form-control" name="valor" id="field_valor" data-cy="valor" formControlName="valor" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_area" jhiTranslate="myCaseApp.meta.area">Area</label>
+          <select class="form-control" name="area" formControlName="area" id="field_area" data-cy="area">
+            <option [ngValue]="null">{{ 'myCaseApp.AreaDoEnem.null' | translate }}</option>
+            @for (areaDoEnem of areaDoEnemValues; track $index) {
+              <option [value]="areaDoEnem">{{ 'myCaseApp.AreaDoEnem.' + areaDoEnem | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_aluno" jhiTranslate="myCaseApp.meta.aluno">Aluno</label>
+          <select class="form-control" id="field_aluno" data-cy="aluno" name="aluno" formControlName="aluno" [compareWith]="compareAlunos">
+            <option [ngValue]="null"></option>
+            @for (alunosOption of alunosSharedCollection; track $index) {
+              <option [ngValue]="alunosOption">{{ alunosOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Salvar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

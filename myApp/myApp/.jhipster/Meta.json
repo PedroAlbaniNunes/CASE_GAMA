@@ -1,0 +1,32 @@
+{
+  "annotations": {
+    "changelogDate": "20250316181938"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "notaAnterior",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "valor",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "area",
+      "fieldType": "AreaDoEnem",
+      "fieldValues": "LINGUAGENS_CODIGOS_E_SUAS_TECNOLOGIAS,CIENCIAS_HUMANAS_E_SUAS_TECNOLOGIAS,CIENCIAS_DA_NATUREZA_E_SUAS_TECNOLOGIAS,MATEMATICA_E_SUAS_TECNOLOGIAS"
+    }
+  ],
+  "name": "Meta",
+  "relationships": [
+    {
+      "otherEntityName": "alunos",
+      "otherEntityRelationshipName": "metas",
+      "relationshipName": "aluno",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}
