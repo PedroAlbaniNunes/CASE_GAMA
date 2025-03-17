@@ -19,22 +19,28 @@ Este repositório contém a solução para o desafio proposto pela Gama, que con
 O modelo JDL utilizado para gerar a aplicação é o seguinte:
 
 ```jdl
-entity Aluno {
+enum AreaDoEnem {
+    LINGUAGENS_CODIGOS_E_SUAS_TECNOLOGIAS,
+    CIENCIAS_HUMANAS_E_SUAS_TECNOLOGIAS,
+    CIENCIAS_DA_NATUREZA_E_SUAS_TECNOLOGIAS,
+    MATEMATICA_E_SUAS_TECNOLOGIAS
+}
+
+entity Alunos {
     nome String
+    cpf Integer
+    matricula Integer
+    nascimento LocalDate
+    anoLetivo Integer
 }
 
 entity Meta {
-    valor Integer
+    notaAnterior Double
+    valor Double
     area AreaDoEnem
+    aluno Alunos  // Referência para Alunos
 }
 
 relationship OneToMany {
-    Aluno to Meta
-}
-
-enum AreaDoEnem {
-    LINGUAGENS,
-    CIENCIAS_HUMANAS,
-    CIENCIAS_NATUREZA,
-    MATEMATICA
+    Alunos{metas} to Meta{aluno}
 }
